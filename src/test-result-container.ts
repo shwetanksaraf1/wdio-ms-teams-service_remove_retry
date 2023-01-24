@@ -32,11 +32,18 @@ export default class TestResultContainer {
 
         if (!Object.prototype.hasOwnProperty.call(this.testResults, testName)) {
             this.testResults[testName] = [];
+        }        
+        if( this.testResults[testName].findIndex(x => x.title == result.title) == -1 )     
+        { 
+            this.testResults[testName].push(result)           
+            result.passed ? (this.passedTests += 1) : (this.failedTests += 1);        
+            this.totalTests += 1;    
+        }   
+        else if(result.passed==true)
+        { 
+            this.testResults[testName].map(x => x.title == result.title ? result.passed:x.passed)        
+            this.failedTests =this.failedTests - 1;        
+            this.passedTests=this.passedTests + 1;    
         }
-
-        this.testResults[testName].push(result);
-
-        result.passed ? (this.passedTests += 1) : (this.failedTests += 1);
-        this.totalTests += 1;
     }
 }
