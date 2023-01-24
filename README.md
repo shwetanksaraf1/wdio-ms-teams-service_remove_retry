@@ -6,7 +6,7 @@ This service will report your test run results to a Microsoft Teams channel usin
 
 ## Setup
 
-Install `wdio-ms-teams-service` as a devDependency
+Install `wdio-ms-teams-service` as a devDependency test
 
 ```
 npm install wdio-ms-teams-service --save-dev
